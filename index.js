@@ -3,8 +3,8 @@ const { Bot, webhookCallback } = require("grammy");
 const express = require("express");
 const { Telegraf, Context } = require('telegraf');
 const axios = require('axios');
-// const bot = new Telegraf(process.env.BOT_KEY);
-const bot = new Bot(process.env.BOT_KEY);
+const bot = new Telegraf(process.env.BOT_KEY);
+// const bot = new Bot(process.env.BOT_KEY);
 const searchUrl = 'https://search.imdbot.workers.dev/?q=';
 const notFound = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQoIJoq9m_zd5OQ3hEAJs1ZjB4x0bhV6t92WeEJYjQ&s"
 // const replaceUrl = titleUrl.replace('?', "tt1375666");
@@ -147,6 +147,8 @@ if (process.env.NODE_ENV === "production") {
     // Use Long Polling for development
     bot.start();
 }
+
+bot.launch();
 
 process.once("SIGINT", () => { bot.stop("SIGINT"); })
 process.once("SIGTERM", () => { bot.stop("SIGTERM"); })
